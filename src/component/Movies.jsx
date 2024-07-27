@@ -6,8 +6,13 @@ const Movies = () => {
   return (
     <>
     <p className='text-center font-bold text-2xl my-8'>Trending Movies</p>
-    <div className='py-3 px-8 flex flex-wrap gap-8'>
+    <div className=' pl-8 flex flex-wrap gap-8'>
       
+      <Moviecard />
+      <Moviecard />
+      <Moviecard />
+      <Moviecard />
+      <Moviecard />
       <Moviecard />
       <Moviecard />
       <Moviecard />
