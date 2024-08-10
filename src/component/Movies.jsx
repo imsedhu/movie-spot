@@ -8,9 +8,22 @@ import Pagination from './Pagination'
 const Movies = () => {
 
   const [movies, setMovies] = useState([]);
+  const [pageNo, setPageNo] = useState(1);
+
+  function handlePrevPage(){
+    if(pageNo===1){
+      setPageNo(pageNo)
+    }else{
+      setPageNo(pageNo-1)
+    }
+  }
+
+  function handleNextPage(){
+    setPageNo(pageNo+1)
+  }
 
   useEffect(()=>{
-    axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=3e935957054458838aa7447a954fb270&language=en-US&page=6`).then(function(res){
+    axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=3e935957054458838aa7447a954fb270&language=en-US&page=${pageNo}`).then(function(res){
       console.log(res.data.results);
       setMovies(res.data.results)
     }, [])
@@ -26,7 +39,7 @@ const Movies = () => {
       
     </div>
 
-      <Pagination />
+      <Pagination handleNextPage={handleNextPage} handlePrevPage={handlePrevPage} pageNo={pageNo} />
     </>
   )
 }
